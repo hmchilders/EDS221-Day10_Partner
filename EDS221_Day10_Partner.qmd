@@ -11,6 +11,7 @@ execute:
 
 ```{r}
 library(lterdatasampler)
+library(tidyverse)
 ```
 
 ```{r}
@@ -18,3 +19,9 @@ View(pie_crab)
 ```
 
 ## Partner 2: Task 1
+
+```{r}
+ggplot(data = pie_crab, aes(y = size, x = latitude)) +
+  geom_point() +
+  theme_minimal()
+```
