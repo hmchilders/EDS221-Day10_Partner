@@ -5,6 +5,7 @@ format: html
 editor: visual
 execute: 
   warning: false
+  echo: false
 ---
 
 ## Partner 1: Task 1
@@ -12,6 +13,7 @@ execute:
 ```{r}
 library(lterdatasampler)
 library(tidyverse)
+
 ```
 
 ```{r}
@@ -21,7 +23,18 @@ View(pie_crab)
 ## Partner 2: Task 1
 
 ```{r}
+#| fig-cap: "Crab data"
 ggplot(data = pie_crab, aes(y = size, x = latitude)) +
   geom_point() +
   theme_minimal()
+```
+
+```{r}
+summary_table <- pie_crab %>% 
+  group_by(site) %>% 
+  summarize(mean_size <- (round(mean(size), 2, na.rm = TRUE)),
+            sd_size <- (round(sd(size),2,na.rm = TRUE)),
+            sample_size <- n()
+  )
+            
 ```
